@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'avert' }
+    agent any
     
     environment {
         DOCKER_HUB_REPO = "avert/flask-hello-world"
