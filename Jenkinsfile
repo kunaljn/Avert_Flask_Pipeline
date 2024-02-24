@@ -1,6 +1,18 @@
 pipeline {
     agent any
     
+    stages {
+        stage('Install Docker') {
+            steps {
+                script {
+                    // Install Docker
+                    sh 'curl -fsSL https://get.docker.com -o get-docker.sh'
+                    sh 'sudo sh get-docker.sh'
+                    sh 'sudo usermod -aG docker ${USER}'
+                }
+            }
+        }
+    }  
     environment {
         DOCKER_HUB_REPO = "avert/flask-hello-world"
         CONTAINER_NAME = "flask-hello-world"
