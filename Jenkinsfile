@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_HUB_REPO = "avert/flask-hello-world"
         CONTAINER_NAME = "flask-hello-world"
-        DOCKERHUB_CREDENTIALS=credentials('dockerhub-credentials')
+        // DOCKERHUB_CREDENTIALS=credentials('dockerhub-credentials')
     }
     
     stages {
@@ -27,7 +27,7 @@ pipeline {
         stage('Push') {
             steps {
                 echo 'Pushing image..'
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u kunaljn --password-stdin'
                 sh 'docker push $DOCKER_HUB_REPO:latest'
             }
         }
